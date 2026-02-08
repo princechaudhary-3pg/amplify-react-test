@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import { Schema } from "../amplify/data/resource";
+import { generateClient } from "aws-amplify/api";
 
 const client = generateClient<Schema>();
+
+async function sayHello() {
+  const result = await client.queries.sayHello({ name: "world" });
+  console.log({result});
+}
 
 function App() {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
@@ -21,6 +26,7 @@ function App() {
     <main>
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
+      <button onClick={sayHello}>say hello</button>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>{todo.content}</li>
