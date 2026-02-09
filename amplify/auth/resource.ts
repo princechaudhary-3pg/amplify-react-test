@@ -17,5 +17,6 @@ export const auth = defineAuth({
   },
   triggers: {
     preSignUp: preSignUp
-  }
+  },
+  groups: ['admins']
 });

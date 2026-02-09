@@ -8,11 +8,22 @@ const schema = a.schema({
     .returns(a.string())
     .handler(a.handler.function(sayHello))
     .authorization((allow) => [allow.publicApiKey()]),
-  Todo: a
+  drivers: a
     .model({
-      content: a.string(),
+      name: a.string().required(),
+      team: a.string(),
+      number: a.integer()
     })
     .authorization((allow) => [allow.publicApiKey()]),
+  wrestlers: a
+    .model({
+      name: a.string().required(),
+      finisher: a.string()
+    })
+    .authorization((allow) => [
+      allow.owner(),
+      allow.group('admins').to(['read'])
+    ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

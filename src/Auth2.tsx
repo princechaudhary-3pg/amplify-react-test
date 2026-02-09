@@ -4,6 +4,7 @@ import { generateClient } from "aws-amplify/api";
 import { Schema } from "../amplify/data/resource";
 import { useEffect, useState } from "react";
 import { fetchUserAttributes } from "aws-amplify/auth";
+import { Wrestlers } from "./components/Wrestlers";
 
 const client = generateClient<Schema>();
 
@@ -13,7 +14,6 @@ async function sayHello() {
 }
 
 export function Auth() {
-
   return <div>
     <Authenticator signUpAttributes={['nickname']}>
       {({ signOut }) => (
@@ -22,6 +22,7 @@ export function Auth() {
           <button onClick={sayHello}>say hello</button>
           <br />
           <button onClick={signOut}>Sign out</button>
+          <Wrestlers />
         </main>
       )}
     </Authenticator>
