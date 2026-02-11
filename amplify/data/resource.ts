@@ -8,10 +8,10 @@ const schema = a.schema({
     .returns(a.string())
     .handler(a.handler.function(sayHello))
     .authorization((allow) => [allow.publicApiKey()]),
-  championship: a
+  comment: a
     .customType({
-      year: a.string(),
-      constructor: a.string()
+      author: a.string(),
+      content: a.string()
     }),
   drivers: a
     .model({
@@ -20,7 +20,7 @@ const schema = a.schema({
       photos: a.string().array(),
       thumbs: a.string().array(),
       number: a.integer(),
-      championships: a.ref('championship').array()
+      comments: a.ref('comment').array()
     })
     .authorization((allow) => [allow.publicApiKey()]),
   wrestlers: a
