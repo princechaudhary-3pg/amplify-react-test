@@ -15,20 +15,20 @@ export function Drivers() {
     });
   }, []);
 
-  function addDriver() {
-    const name = globalThis.prompt("Driver's Name")!;
-    const team = globalThis.prompt("Team Name") || "";
-    const number = Number(globalThis.prompt("Driver Number") || "0");
+  // function addDriver() {
+  //   const name = globalThis.prompt("Driver's Name")!;
+  //   const team = globalThis.prompt("Team Name") || "";
+  //   const number = Number(globalThis.prompt("Driver Number") || "0");
 
-    driversClient.create({
-      name,
-      team,
-      number
-    }, { authMode: "apiKey" })
-  }
+  //   driversClient.create({
+  //     name,
+  //     team,
+  //     number
+  //   }, { authMode: "apiKey" })
+  // }
 
   return <main>
-    <button onClick={addDriver}>Add F1 driver</button>
+    {/* <button onClick={addDriver}>Add F1 driver</button> */}
     <h3>All F1 drivers:</h3>
     <ul>
       {drivers.map((driver) => (

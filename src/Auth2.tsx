@@ -14,6 +14,7 @@ async function sayHello() {
 }
 
 export function Auth() {
+
   return <div>
     <Authenticator signUpAttributes={['nickname']}>
       {({ signOut }) => (

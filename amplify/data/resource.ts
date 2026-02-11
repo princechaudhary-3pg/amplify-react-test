@@ -8,11 +8,19 @@ const schema = a.schema({
     .returns(a.string())
     .handler(a.handler.function(sayHello))
     .authorization((allow) => [allow.publicApiKey()]),
+  championship: a
+    .customType({
+      year: a.string(),
+      constructor: a.string()
+    }),
   drivers: a
     .model({
       name: a.string().required(),
       team: a.string(),
-      number: a.integer()
+      photos: a.string().array(),
+      thumbs: a.string().array(),
+      number: a.integer(),
+      championships: a.ref('championship').array()
     })
     .authorization((allow) => [allow.publicApiKey()]),
   wrestlers: a
